@@ -92,7 +92,6 @@ int bl808_configgpio(int pin, gpio_pinattr_t attr)
     }
 
   regaddr = BL808_GPIO_BASE + (pin * 4);
-  // _info("regaddr=%p, cfg=0x%x\n", regaddr, cfg);////
   putreg32(cfg, regaddr);
   return OK;
 }
