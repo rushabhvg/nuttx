@@ -113,7 +113,6 @@ void bl808_gpiowrite(int pin, bool value)
   regaddr = BL808_GPIO_BASE + (pin * 4);
   if (value)
     {
-      up_putc('\n'); _info("regaddr=%p, set=0x%x\n", regaddr, (1 << reg_gpio_xx_o));////
       modifyreg32(regaddr, 0, (1 << reg_gpio_xx_o));
     }
   else
