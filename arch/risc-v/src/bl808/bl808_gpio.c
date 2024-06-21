@@ -117,7 +117,6 @@ void bl808_gpiowrite(int pin, bool value)
     }
   else
     {
-      up_putc('\n'); _info("regaddr=%p, clear=0x%x\n", regaddr, (1 << reg_gpio_xx_o));////
       modifyreg32(regaddr, (1 << reg_gpio_xx_o), 0);
     }
 }
