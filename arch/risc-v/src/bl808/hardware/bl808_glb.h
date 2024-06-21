@@ -132,7 +132,6 @@
 
 /* Register bit definitions *************************************************/
 
-//// Check every bit
 #define GPIO_CFGCTL0_GPIO_0_FUNC_SEL_SHIFT           (8)
 #define GPIO_CFGCTL0_GPIO_0_FUNC_SEL_MASK            (0x0f << GPIO_CFGCTL0_GPIO_0_FUNC_SEL_SHIFT)
 #define GPIO_CFGCTL0_GPIO_0_OE                       (1 << 6)
