@@ -33,7 +33,7 @@
 
 #define BL808_GPIO_BASE 0x200008c4ul /* gpio */
 #define BL808_NGPIOS 45
-#define reg_gpio_xx_o 24
+#define GPIO_O_SHIFT 24
 #define reg_gpio_xx_i 28
 
 /****************************************************************************
