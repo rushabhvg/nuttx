@@ -31,7 +31,6 @@
 #include "hardware/bl808_glb.h"
 #include "bl808_gpio.h"
 
-////#define BL808_GLB_BASE        0x20000000ul  /* glb */
 #define BL808_GPIO_BASE 0x200008c4ul /* gpio */
 #define BL808_NGPIOS 45
 #define reg_gpio_xx_o 24
