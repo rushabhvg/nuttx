@@ -55,7 +55,6 @@ int bl808_configgpio(int pin, gpio_pinattr_t attr)
 
   DEBUGASSERT(pin >= 0 && pin <= BL808_NGPIOS);
 
-  //// TODO: Change GPIO_CFGCTL0_GPIO_0_IE to GPIO_CFG_GPIO_IE
   if (attr & GPIO_INPUT)
     {
       cfg |= GPIO_CFGCTL0_GPIO_0_IE;
