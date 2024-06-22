@@ -132,7 +132,6 @@
 
 /* Register bit definitions *************************************************/
 
-//// Check every bit
 #define GPIO_CFGCTL0_GPIO_0_FUNC_SEL_SHIFT           (8)
 #define GPIO_CFGCTL0_GPIO_0_FUNC_SEL_MASK            (0x0f << GPIO_CFGCTL0_GPIO_0_FUNC_SEL_SHIFT)
 #define GPIO_CFGCTL0_GPIO_0_OE                       (1 << 6)
@@ -142,6 +141,5 @@
 #define GPIO_CFGCTL0_GPIO_0_DRV_MASK                 (0x03 << GPIO_CFGCTL0_GPIO_0_DRV_SHIFT)
 #define GPIO_CFGCTL0_GPIO_0_SMT                      (1 << 1)
 #define GPIO_CFGCTL0_GPIO_0_IE                       (1 << 0)
-////
 
 #endif /* __ARCH_RISCV_SRC_BL808_HARDWARE_BL808_GLB_H */

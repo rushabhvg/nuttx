@@ -30,13 +30,12 @@
 #include "riscv_internal.h"
 #include "hardware/bl808_glb.h"
 #include "bl808_gpio.h"
+#include "bl808_memorymap.h"
+///
 
-////TODO
-////#define BL808_GLB_BASE        0x20000000ul  /* glb */
-#define BL808_GPIO_BASE 0x200008c4ul /* gpio */
 #define BL808_NGPIOS 45
-#define reg_gpio_xx_o 24
-#define reg_gpio_xx_i 28
+#define GPIO_O_SHIFT 24
+#define GPIO_I_SHIFT 28
 
 /****************************************************************************
  * Public Functions
@@ -57,7 +56,6 @@ int bl808_configgpio(int pin, gpio_pinattr_t attr)
 
   DEBUGASSERT(pin >= 0 && pin <= BL808_NGPIOS);
 
-  //// TODO: Change GPIO_CFGCTL0_GPIO_0_IE to GPIO_CFG_GPIO_IE
   if (attr & GPIO_INPUT)
     {
       cfg |= GPIO_CFGCTL0_GPIO_0_IE;
@@ -95,7 +93,6 @@ int bl808_configgpio(int pin, gpio_pinattr_t attr)
     }
 
   regaddr = BL808_GPIO_BASE + (pin * 4);
-  // _info("regaddr=%p, cfg=0x%x\n", regaddr, cfg);////
   putreg32(cfg, regaddr);
   return OK;
 }
@@ -117,13 +114,11 @@ void bl808_gpiowrite(int pin, bool value)
   regaddr = BL808_GPIO_BASE + (pin * 4);
   if (value)
     {
-      up_putc('\n'); _info("regaddr=%p, set=0x%x\n", regaddr, (1 << reg_gpio_xx_o));////
-      modifyreg32(regaddr, 0, (1 << reg_gpio_xx_o));
+      modifyreg32(regaddr, 0, (1 << GPIO_O_SHIFT));
     }
   else
     {
-      up_putc('\n'); _info("regaddr=%p, clear=0x%x\n", regaddr, (1 << reg_gpio_xx_o));////
-      modifyreg32(regaddr, (1 << reg_gpio_xx_o), 0);
+      modifyreg32(regaddr, (1 << GPIO_O_SHIFT), 0);
     }
 }
 
@@ -144,5 +139,5 @@ bool bl808_gpioread(int pin)
 
   regaddr = BL808_GPIO_BASE + (pin * 4);
   regval = getreg32(regaddr);
-  return (regval & (1 << reg_gpio_xx_i)) != 0;
+  return (regval & (1 << GPIO_I_SHIFT)) != 0;
 }
