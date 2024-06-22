@@ -31,7 +31,6 @@
 #include "hardware/bl808_glb.h"
 #include "bl808_gpio.h"
 #include "bl808_memorymap.h"
-///
 
 #define BL808_NGPIOS 45
 #define GPIO_O_SHIFT 24

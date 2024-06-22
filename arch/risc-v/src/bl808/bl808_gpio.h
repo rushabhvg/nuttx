@@ -118,9 +118,9 @@
 #define GPIO_FUNC_UART   (7  << GPIO_FUNC_SHIFT)  /* UART */
 #define GPIO_FUNC_PWM    (8  << GPIO_FUNC_SHIFT)  /* PWM */
 #define GPIO_FUNC_EXT_PA (9  << GPIO_FUNC_SHIFT)  /* Analog */
-#define GPIO_FUNC_ANA    (10 << GPIO_FUNC_SHIFT) /* Analog */
-#define GPIO_FUNC_SWGPIO (11 << GPIO_FUNC_SHIFT) /* Software GPIO */
-#define GPIO_FUNC_JTAG   (14 << GPIO_FUNC_SHIFT) /* JTAG */
+#define GPIO_FUNC_ANA    (10 << GPIO_FUNC_SHIFT)  /* Analog */
+#define GPIO_FUNC_SWGPIO (11 << GPIO_FUNC_SHIFT)  /* Software GPIO */
+#define GPIO_FUNC_JTAG   (14 << GPIO_FUNC_SHIFT)  /* JTAG */
 
 /****************************************************************************
  * Public Types
