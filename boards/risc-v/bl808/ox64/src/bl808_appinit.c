@@ -28,14 +28,13 @@
 #include <stdio.h>
 #include <syslog.h>
 #include <errno.h>
-#include <debug.h> ////
 
 #include <nuttx/board.h>
 #include <nuttx/drivers/ramdisk.h>
 #include <sys/mount.h>
 #include <sys/boardctl.h>
 #include <arch/board/board_memorymap.h>
-#include "bl808_gpio.h" ////
+#include "bl808_courier.h"
 
 /****************************************************************************
  * Pre-processor Definitions
@@ -159,6 +158,10 @@ void board_late_initialize(void)
 
   mount_ramdisk();
 
+  /* Initialize courier to get IRQs from M0 */
+
+  bl808_courier_init();
+
   /* Perform board-specific initialization */
 
 #ifdef CONFIG_NSH_ARCHINIT
@@ -166,30 +169,4 @@ void board_late_initialize(void)
   mount(NULL, "/proc", "procfs", 0, NULL);
 
 #endif
-
-#ifdef CONFIG_USERLED
-  ////TODO: Move to bringup.c
-  /* Register the LED driver */
-
-  int ret = userled_lower_initialize("/dev/userleds");
-  if (ret < 0)
-    {
-      syslog(LOG_ERR, "ERROR: userled_lower_initialize() failed: %d\n", ret);
-    }
-#endif
-
-  ////TODO
-  #define GPIO_PIN  29
-  #define GPIO_ATTR (GPIO_OUTPUT | GPIO_FUNC_SWGPIO)
-
-  // _info("Config GPIO: pin=%d, attr=0x%x\n", GPIO_PIN, GPIO_ATTR);
-  int ret2 = bl808_configgpio(GPIO_PIN, GPIO_ATTR);
-  DEBUGASSERT(ret2 == OK);
-
-  // _info("Set GPIO: pin=%d\n", GPIO_PIN);
-  bl808_gpiowrite(GPIO_PIN, true);
-  up_mdelay(1000);
-
-  // _info("Clear GPIO: pin=%d\n", GPIO_PIN);
-  bl808_gpiowrite(GPIO_PIN, false);
 }
