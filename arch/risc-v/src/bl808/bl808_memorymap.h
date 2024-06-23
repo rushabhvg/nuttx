@@ -18,6 +18,8 @@
  *
  ****************************************************************************/
 
+#define BL808_GPIO_BASE 0x200008c4ul /* gpio */
+
 #ifndef __ARCH_RISCV_SRC_BL808_BL808_MEMORYMAP_H
 #define __ARCH_RISCV_SRC_BL808_BL808_MEMORYMAP_H
 
