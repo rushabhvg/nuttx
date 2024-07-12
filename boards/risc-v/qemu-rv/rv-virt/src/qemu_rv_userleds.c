@@ -34,22 +34,12 @@
 #include <arch/board/board.h>
 
 #include "chip.h"
-// #include "qemu_rv_gpio.h"
 
 #ifdef CONFIG_USERLED
 
 /****************************************************************************
  * Private Data
  ****************************************************************************/
-
-/* LED index */
-
-// static const uint32_t g_led_map[BOARD_LEDS] =
-// {
-//   29, /* LED1: GPIO 29 */
-//   -1, /* LED2: To be configured */
-//   -1  /* LED3: To be configured */
-// };
 
 static const uint32_t g_led_setmap[BOARD_LEDS] =
 {
@@ -92,21 +82,6 @@ static const uint32_t g_led_setmap[BOARD_LEDS] =
 
 uint32_t board_userled_initialize(void)
 {
-  // int i;
-
-  /* Configure the LED GPIO for output. */
-
-  // for (i = 0; i < BOARD_LEDS; i++)
-  //   {
-  //     uint32_t gpio = g_led_map[i];
-
-  //     if (gpio != (uint32_t)-1)
-  //       {
-  //         int ret = bl808_configgpio(gpio, GPIO_OUTPUT | GPIO_FUNC_SWGPIO);
-  //         DEBUGASSERT(ret == OK);
-  //       }
-  //   }
-
   return BOARD_LEDS;
 }
 
