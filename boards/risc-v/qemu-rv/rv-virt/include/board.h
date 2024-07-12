@@ -37,10 +37,10 @@
 
 typedef enum
 {
-    BOARD_LED1 = 0,  /* Green LED */
-    BOARD_LED2 = 1,  /* Red LED */
-    BOARD_LED3 = 2,  /* Blue LED */
-    BOARD_LEDS       /* Number of LEDs */
+    BOARD_LED1 = 0,
+    BOARD_LED2 = 1,
+    BOARD_LED3 = 2,
+    BOARD_LEDS  /* Number of LEDs */
 } led_typedef_enum;
 
 /* LED bits for use with board_userled_all() */
@@ -57,7 +57,7 @@ typedef enum
 #define LED_SIGNAL        5  /* N/A */
 #define LED_ASSERTION     6  /* N/A */
 #define LED_PANIC         7  /* N/A */
-#define LED_IDLE          8  /* LED */
+#define LED_CPU           8  /* LED */
 
 /****************************************************************************
  * Public Types
