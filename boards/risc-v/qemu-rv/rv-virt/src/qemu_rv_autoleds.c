@@ -105,6 +105,8 @@ void board_autoled_initialize(void)
 
 void board_autoled_on(int led)
 {
+  /* This stub is required for supporting User LEDs */
+
   UNUSED(led);
 }
 
@@ -135,6 +137,8 @@ void board_autoled_on(int led)
 
 void board_autoled_off(int led)
 {
+  /* This stub is required for supporting User LEDs */
+
   UNUSED(led);
 }
 
