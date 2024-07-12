@@ -34,70 +34,8 @@
 #include <arch/board/board.h>
 
 #include "chip.h"
-// #include "bl808_gpio.h"
 
 #ifdef CONFIG_ARCH_LEDS
-
-/****************************************************************************
- * Private Data
- ****************************************************************************/
-
-/* LED index */
-
-// static const uint32_t g_led_map[BOARD_LEDS] =
-// {
-//   -1, /* LED1: To be configured */
-//   -1, /* LED2: To be configured */
-//   -1  /* LED3: To be configured */
-// };
-
-// static const uint32_t g_led_setmap[BOARD_LEDS] =
-// {
-//   BOARD_LED1_BIT,
-//   BOARD_LED2_BIT,
-//   BOARD_LED3_BIT
-// };
-
-static bool g_initialized;
-
-/****************************************************************************
- * Private Functions
- ****************************************************************************/
-
-/* Turn on selected led */
-
-static void qemu_rv_led_on(led_typedef_enum led_num)
-{
-  if ((unsigned)led_num < BOARD_LEDS)
-    {
-      _info("LED %d set to %d\n", led_num, 1);
-      // g_led_setmap[led_num] = 1;
-  //     uint32_t gpio = g_led_map[led_num];
-  //     _info("LED %d set to %d\n", led + 1, ledon ? 1 : 0);
-
-  //     // if (gpio != (uint32_t)-1)
-  //     //   {
-  //     //     bl808_gpiowrite(gpio, true);
-  //     //   }
-    }
-}
-
-/* Turn off selected led */
-
-static void qemu_rv_led_off(led_typedef_enum led_num)
-{
-  if ((unsigned)led_num < BOARD_LEDS)
-    {
-      _info("LED %d set to %d\n", led_num, 0);
-      // g_led_setmap[led_num] = 0;
-      // uint32_t gpio = g_led_map[led_num];
-
-      // if (gpio != (uint32_t)-1)
-      //   {
-      //     bl808_gpiowrite(gpio, false);
-      //   }
-    }
-}
 
 /****************************************************************************
  * Public Functions
@@ -134,20 +72,6 @@ static void qemu_rv_led_off(led_typedef_enum led_num)
 
 void board_autoled_initialize(void)
 {
-  // int i;
-
-  /* Configure the LED GPIO for output. */
-
-  // for (i = 0; i < BOARD_LEDS; i++)
-  //   {
-  //     uint32_t gpio = g_led_map[i];
-
-  //     if (gpio != (uint32_t)-1)
-  //       {
-  //         int ret = bl808_configgpio(gpio, GPIO_OUTPUT | GPIO_FUNC_SWGPIO);
-  //         DEBUGASSERT(ret == OK);
-  //       }
-  //   }
 }
 
 /****************************************************************************
@@ -181,47 +105,7 @@ void board_autoled_initialize(void)
 
 void board_autoled_on(int led)
 {
-  switch (led)
-    {
-      case LED_HEAPALLOCATE:
-        qemu_rv_led_on(BOARD_LED1);
-        break;
-
-      case LED_IRQSENABLED:
-        qemu_rv_led_on(BOARD_LED2);
-        break;
-
-      case LED_STACKCREATED:
-        qemu_rv_led_on(BOARD_LED3);
-        g_initialized = true;
-        break;
-
-      case LED_INIRQ:
-        qemu_rv_led_on(BOARD_LED1);
-        qemu_rv_led_on(BOARD_LED2);
-        break;
-
-      case LED_SIGNAL:
-        qemu_rv_led_on(BOARD_LED1);
-        qemu_rv_led_on(BOARD_LED3);
-        break;
-
-      case LED_ASSERTION:
-        qemu_rv_led_on(BOARD_LED2);
-        qemu_rv_led_on(BOARD_LED3);
-        break;
-
-      case LED_PANIC:
-        qemu_rv_led_on(BOARD_LED1);
-        break;
-
-      case LED_IDLE:
-        qemu_rv_led_on(BOARD_LED2);
-        break;
-
-      default:
-        break;
-    }
+  UNUSED(led);
 }
 
 /****************************************************************************
@@ -251,34 +135,7 @@ void board_autoled_on(int led)
 
 void board_autoled_off(int led)
 {
-  switch (led)
-    {
-      case LED_SIGNAL:
-        qemu_rv_led_off(BOARD_LED1);
-        qemu_rv_led_off(BOARD_LED3);
-        break;
-
-      case LED_INIRQ:
-        qemu_rv_led_off(BOARD_LED1);
-        qemu_rv_led_off(BOARD_LED2);
-        break;
-
-      case LED_ASSERTION:
-        qemu_rv_led_off(BOARD_LED2);
-        qemu_rv_led_off(BOARD_LED3);
-        break;
-
-      case LED_PANIC:
-        qemu_rv_led_off(BOARD_LED1);
-        break;
-
-      case LED_IDLE:
-        qemu_rv_led_off(BOARD_LED2);
-        break;
-
-      default:
-        break;
-    }
+  UNUSED(led);
 }
 
 #endif /* CONFIG_ARCH_LEDS */
